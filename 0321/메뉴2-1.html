@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #header {
+            width: 100%;
+            height: 150px;
+            background-color: slateblue;
+        }
+
+        #header_in {
+            margin: 0 auto;
+            padding-top: 50px;
+            width: 1500px;
+            height: 150px;
+            background-color: rgb(244, 181, 249);
+            box-sizing: border-box;
+        }
+
+        #header_in nav {
+            margin: 0 auto;
+            width: 602px;
+            height: 60px;
+        }
+
+        #header_in nav>ul {
+            width: 100%;
+            height: 30px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+
+        #header_in nav>ul>li {
+            float: left;
+            width: 120px;
+            height: 30px;
+            position: relative;
+            text-align: center;
+            line-height: 30px;
+            border-right: 1px solid #000;
+            box-sizing: border-box;
+        }
+
+        #header_in nav>ul>li:last-child {
+            border-right: 0;
+        }
+
+        #header_in nav>ul>li>a:hover {
+            display: block;
+            background-color: aliceblue;
+        }
+
+        #header_in nav>.sub_area {
+            width: 100%;
+            height: 30px;
+            position: relative;
+        }
+
+        #header_in nav .sub {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 600px;
+            border: 1px solid#000;
+        }
+
+        #header_in nav .sub1 {
+            z-index: 500;
+        }
+
+        #header_in nav .sub2 {
+            z-index: 400;
+        }
+
+        #header_in nav .sub3 {
+            z-index: 300;
+        }
+
+        #header_in nav .sub4 {
+            z-index: 200;
+        }
+
+        #header_in nav .sub5 {
+            z-index: 100;
+        }
+
+
+
+        #header_in nav .sub li {
+            float: left;
+            width: 120px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #header_in nav .sub li a {
+            display: block;
+            width: 100%;
+            height: 30px;
+            transition: 1s;
+        }
+
+        /* #header_in nav .sub li a:hover {
+      background-color: rgb(124, 58, 69);
+      color: aliceblue;
+    } */
+
+        #header_in nav .sub li.act a {
+            background-color: rgb(124, 58, 69);
+            color: aliceblue;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/jquery.easing.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".sub").hide(); //초기값,, 대상이 화면에 없다
+            //$('.sub').css({display:'none'});
+
+            $("#header_in nav>ul>li").hover(function () { })
+            var i = $(this).index()
+
+            $("#header_in nav>ul>li")
+                .eq(0)
+                .hover(
+                    function () {
+                        $(this).find(".sub").show();
+                    },
+                    function () {
+                        $(this).find(".sub").hide();
+                    }
+                );
+            $("#header_in nav>ul>li")
+                .eq(1)
+                .hover(
+                    function () {
+                        $(this).find(".sub").fadeIn(500);
+                    },
+                    function () {
+                        $(this).find(".sub").fadeOut(500);
+                    }
+                );
+            $("#header_in nav>ul>li")
+                .eq(2)
+                .hover(
+                    function () {
+                        $(this).find(".sub").slideDown(500);
+                    },
+                    function () {
+                        $(this).find(".sub").slideUp(500);
+                    }
+                );
+            $("#header_in nav>ul>li")
+                .eq(3)
+                .hover(
+                    function () {
+                        $(this).find(".sub").animate(500, "easeInBounce");
+                    },
+                    function () {
+                        $(this).find(".sub").animate(800, "easeOutBack");
+                    }
+                );
+
+            //여기서 가속도함수를 어떻게쓰는지 잘모르겠습니다..
+
+            $("#header_in nav>ul>li")
+                .eq(4)
+                .hover(
+                    function () {
+                        $(this).find(".sub").show(800);
+                    },
+                    function () {
+                        $(this).find(".sub").hide(800);
+                    }
+                );
+            $("#header_in nav>ul>li").hover(
+                $('.sub_area > .sub')
+                    .eq(i)
+                    .show()
+                    .css({ opacity: '0', height: '0px' })
+                    .animate({ opacity: '1', height: '30px' })
+            ),
+
+                $('.sub_area').mouseleave(
+                    function () {
+                        $('.sub_area > .sub').hide();
+                    }
+                )
+
+            // function () {
+            //     $('.sub_area > .sub').hide();
+            // }
+
+            //서브메뉴 스타일
+
+            $('#header_in nav .sub li').hover(
+                function () {
+                    $(this).addClass('act');
+                },
+                function () {
+                    $(this).removeClass('act');
+                }
+            )
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <div id="header_in">
+            <nav>
+                <ul>
+                    <li><a href="">menu1</a></li>
+                    <li><a href="">menu2</a></li>
+                    <li><a href="">menu3</a></li>
+                    <li><a href="">menu4</a></li>
+                    <li><a href="">menu5</a></li>
+                </ul>
+                <div class="sub_area">
+                    <ul class="sub sub1">
+                        <li><a href="">submn11</a></li>
+                        <li><a href="">submn12</a></li>
+                        <li><a href="">submn13</a></li>
+                        <li><a href="">submn14</a></li>
+                        <li><a href="">submn15</a></li>
+                    </ul>
+                    <ul class="sub sub2">
+                        <li><a href="">submn21</a></li>
+                        <li><a href="">submn22</a></li>
+                        <li><a href="">submn23</a></li>
+                        <li><a href="">submn24</a></li>
+                        <li><a href="">submn25</a></li>
+                    </ul>
+                    <ul class="sub sub3">
+                        <li><a href="">submn31</a></li>
+                        <li><a href="">submn32</a></li>
+                        <li><a href="">submn33</a></li>
+                        <li><a href="">submn34</a></li>
+                        <li><a href="">submn35</a></li>
+                    </ul>
+                    <ul class="sub sub4">
+                        <li><a href="">submn41</a></li>
+                        <li><a href="">submn42</a></li>
+                        <li><a href="">submn43</a></li>
+                        <li><a href="">submn44</a></li>
+                        <li><a href="">submn45</a></li>
+                    </ul>
+                    <ul class="sub sub5">
+                        <li><a href="">submn51</a></li>
+                        <li><a href="">submn52</a></li>
+                        <li><a href="">submn53</a></li>
+                        <li><a href="">submn54</a></li>
+                        <li><a href="">submn55</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</body>
+
+</html>

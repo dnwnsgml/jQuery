@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin-top: 20px;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            border: 2px solid blue;
+            position: absolute;
+
+        }
+
+        #box1 {
+            top: 50px;
+            left: 0px;
+        }
+
+        #box2 {
+            top: 250px;
+            left: 100px;
+        }
+
+        #box3 {
+            top: 450px;
+            left: 200px;
+        }
+
+        #box4 {
+            top: 650px;
+            left: 300px;
+        }
+
+        #box5 {
+            top: 850px;
+            left: 400px;
+        }
+
+        input {
+
+            height: 50px;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/jquery.easing.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#box1').delay(0).css({ left: '0px' }).animate({ left: '1000px' }, 800, 'easeInBounce', function () {
+                $('#box2').delay(200).css({ left: '100px' }).animate({ left: '1000px' }, 800, 'easeInElastic', function () {
+                    $('#box3').delay(400).css({ left: '200px' }).animate({ left: '1000px' }, 800, 'easeInCirc', function () {
+                        $('#box4').delay(600).css({ left: '300px' }).animate({ left: '1000px' }, 800, 'easeOutBack', function () {
+                            $('#box5').delay(800).css({ left: '400px' }).animate({ left: '1000px' }, 800, 'easeInOutBack', function () {
+                                $('#box5').delay(800).css({ left: '1000px' }).animate({ left: '400px' }, 800, function () {
+                                    $('#box4').delay(600).css({ left: '1000px' }).animate({ left: '300px' }, 800, function () {
+                                        $('#box3').delay(400).css({ left: '1000px' }).animate({ left: '200px' }, 800, function () {
+                                            $('#box2').delay(200).css({ left: '1000px' }).animate({ left: '100px' }, 800, 'easeInElastic', function () {
+                                                $('#box1').delay(0).css({ left: '1000px' }).animate({ left: '0px' }, 800, 'easeInBounce')
+                                            })
+                                        })
+                                    });
+                                })
+                            });
+                        });
+                    });
+                });
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div id="box1" class="box">box1</div>
+    <div id="box2" class="box">box2</div>
+    <div id="box3" class="box">box3</div>
+    <div id="box4" class="box">box4</div>
+    <div id="box5" class="box">box5</div>
+</body>
+
+</html>

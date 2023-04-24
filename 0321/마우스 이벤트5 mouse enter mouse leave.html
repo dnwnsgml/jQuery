@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('p').mouseenter(function () {
+                $(this).css('background-color', 'pink');
+            })
+
+            $('p').mouseleave(function () {
+                $(this).css('background-color', 'yellow');
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <p class="p1"><b>01이곳에 마우스의 화살표를 글자영역 위에 가져다 대 봅니다</b></p>
+</body>
+
+</html>
