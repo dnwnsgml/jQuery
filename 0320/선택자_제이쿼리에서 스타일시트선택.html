@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            // $('ul li').css('color', 'red');
+            // $('#li01').css({ color: 'blue', fontSize: '20px' });
+            // $('.last').css({ color: 'skyblue', fontSize: '20px' });
+            // $('ul>li:first-child').css({ color: 'blue', fontSize: '20px' });
+            // $('ul>li:last-child').css({ color: 'blue', fontSize: '20px' });
+            // $('ul>li:nth-child(3)').css({ color: 'red', fontSize: '20px' });
+            //$('ul>li:eq(3)').css({ color: 'blue', fontSize: '20px' });
+            //eq(3)는 3번째를 의미 단, 0부터 시작 4번째스타일 적용
+            //$('ul>li:even').css({ color: 'blue', fontSize: '20px' });
+            //짝수번째 스타일적용
+            $('ul>li:odd').css({ color: 'blue', fontSize: '20px' });
+            //홀수번째 스타일적용
+        })
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li id="li01">menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li class="last">menu</li>
+    </ul>
+</body>
+
+</html>

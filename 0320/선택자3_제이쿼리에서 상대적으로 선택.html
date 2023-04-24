@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$('#li01')
+            //$('ul > li#li01').next().css({ color: 'red' });
+            //next()는 선택된 대상에 다음에 오는 요소
+
+            //$('ul > li#li01').parent().css({ color: 'red' });
+            //parent()는 선택된 대상에 한칸위 부모요소
+
+            //$('ul > li#li01').parent().parent().css({ color: 'red' });
+            //$('ul > li#li01').parents().css({ color: 'red' });
+        })
+    </script>
+</head>
+
+<body>
+    <div>
+        <h2>parent()</h2>
+        <ul>
+            <li id="li01">menu</li>
+            <li>menu</li>
+            <li>menu</li>
+            <li>menu</li>
+            <li class="last">menu</li>
+        </ul>
+    </div>
+</body>
+
+</html>
