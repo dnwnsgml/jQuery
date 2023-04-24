@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 20px auto;
+            padding: 0;
+            width: 400px;
+            font-size: 13px;
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        /* 추가되는 태그 */
+
+        #tip {
+            position: absolute;
+            width: 300px;
+            padding: 5px;
+            display: none;
+            color: #fff;
+            background-color: #05184D;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            var tempTitle;  //추가되는 태그에 입력할 내용
+            var tempImg;
+            var type;       //입력되는 내용의 이미지와 글자 타입을 구분하는 값
+
+            $('a').hover(
+                function () {
+                    tempTitle = $(this).attr('title');
+                    type = $(this).attr('class');
+                    $(this).attr("title", "");
+                    console.log('tempTitle' + tempTitle);
+
+                    //이미지태그로 구분이 되면 이미지 태그형식을 갖춤
+                    if (type == 'img') {
+                        tempImg = '<img src="tempTitle +" alt="" />'
+                    }
+                    console.log('tempImg' + tempImg);
+
+                    //태그추가
+                    $('body').append('<div id="tip"></div>')
+
+                    //추가된 태그에 이미지형식인지 글자형식인지 제어
+                    if (type == 'img') {
+                        $('#tip').html(tempImg);
+                        $('#tip').css('widht', '100px');
+                    } else {
+                        $('#tip').text(tempTitle);
+                    }
+
+                    //위치값 설정
+                    var pageX = $(this).offset().left - 20;
+                    var pageY = $(this).offset().top - $("#tip").innerHeight();
+                    $('#tip').css({ left: pageX + 'px', top: pageY + 'px' }).fadeIn(500);
+                },
+                function () {
+                    $('#tip').remove();
+                }
+            )
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <p>
+            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
+            some form, by injected humour, or randomised words which don't look even slightly believable.
+        </p>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a <a href="#"
+                title="There are many variations of passages of Lorem Ipsum available passages of Lorem Ipsum available passages of Lorem Ipsum available passages of ">galley</a>
+            of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged.
+        </p>
+        <p>
+            Contrary to popular belief, <a href="http://www.lipsum.com/" title="img/site.jpg" class="img">Lorem
+                Ipsum</a> is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+            making it over 2000 years old.
+        </p>
+    </div>
+</body>
+
+</html>

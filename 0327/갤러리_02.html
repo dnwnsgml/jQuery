@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #gallery {
+            margin: 50px;
+            width: 610px;
+            height: 280px;
+            border: 2px double#000;
+        }
+
+        #gallery ul {
+            float: left;
+        }
+
+        #gallery ul li {
+            width: 105px;
+        }
+
+        #gallery ul li img {
+            float: left;
+            width: 100%;
+        }
+
+        #gallery div {
+            float: left;
+            width: 500px;
+            padding-left: 5px;
+            box-sizing: border-box;
+        }
+
+        .caption {
+            position: relative;
+            padding: 10px;
+            font-size: 12px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #ccc;
+            width: 500px;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        //문서로 이벤트 발생하는 기본문법 2가지
+        // $(document).ready(function () { });
+        // $(function () {});
+        $(document).ready(function () {
+            $('em').hide();
+
+            $('.btns a').click(function (e) {
+                e.preventDefault();
+                //$(대상).attr('속성명')
+
+                //기존에 있는 이미지 설명글 요소를 삭제
+                if ($(".caption")) {     //조건으로 제이쿼리 대상을 지정시 요소가 화면 있다면 참
+                    $(".caption").remove();     //append()와 반대되는 명령어
+                }
+
+                var path = $(this).attr('href');    //특정요소의 속성값 추출
+                //console.log(path);
+
+                //속성을 적용(바꾸는 작업)
+                $('.largeImg img').attr({ src: path })
+                $('.largeImg img').css({ opacity: 0 }).animate({ opacity: 1 });
+
+                //이미지 설명글 생성
+                var msg = $(this).next('em').text();    //대상에서 글자를 추출
+                console.log(msg);
+
+                $('.largeImg').append('<div class="caption"></div>');
+                $('.caption').text(msg);    //대상에 글자를 입력
+
+                var posy = $('.largeImg .caption').height() + 27;
+                $('.largeImg .caption').animate({ top: '-=' + posy + 'px' }, 500)
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="gallery">
+        <ul class="btns">
+            <li>
+                <a href="./images/pic1.jpg"><img src="./images/th_pic1.jpg" alt=""></a>
+                <em>1이미지 설명</em>
+            </li>
+            <li>
+                <a href="./images/pic2.jpg"><img src="./images/th_pic2.jpg" alt=""></a>
+                <em>
+                    2이미지 설명<br>
+                    2이미지 설명
+                </em>
+            </li>
+            <li>
+                <a href="./images/pic3.jpg"><img src="./images/th_pic3.jpg" alt=""></a>
+                <em>
+                    3이미지 설명<br>
+                    3이미지 설명<br>
+                    3이미지 설명
+                </em>
+            </li>
+        </ul>
+        <div class="largeImg"><img src="./images/pic1.jpg" alt=""></div>
+    </div>
+</body>
+
+</html>

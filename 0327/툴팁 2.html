@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 20px auto;
+            padding: 0;
+            width: 400px;
+            font-size: 13px;
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        #tip {
+            position: absolute;
+            width: 20px;
+            padding: 5px;
+            display: none;
+            color: #fff;
+            background-color: #05184D;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            var tempTitle;
+
+            $('a').hover(
+                function () {
+                    tempTitle = $(this).attr('title');
+                    $(this).attr('title');
+
+                    $('body').append('<div id="tip"></div>');
+
+                    var pageX = $(this).offset().left - 20;
+                    var pageY = $(this).offset().top - $('#tip').innerHeight();
+                    $('#tip').css({ left: pageX + 'px', top: pageY + 'px' }).fadeIn(500);
+
+                },
+                function () {
+                    $('#tip').remove();
+                }
+            )
+        })
+    </script>
+</head>
+
+<body>
+    <p>툴팁1 <a href="#" title="tooltip1">설명</a></p>
+    <p>툴팁2 <a href="#" title="tooltip2">설명</a></p>
+    <p>툴팁3 <a href="#" title="tooltip3">설명</a></p>
+    <p>툴팁4 <a href="#" title="tooltip4">설명</a></p>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #gallery {
+            margin: 50px;
+            width: 610px;
+            height: 280px;
+            border: 2px double#000;
+        }
+
+        #gallery ul {
+            float: left;
+        }
+
+        #gallery ul li {
+            width: 105px;
+        }
+
+        #gallery ul li img {
+            float: left;
+            width: 100%;
+        }
+
+        #gallery div {
+            float: left;
+            width: 500px;
+            padding-left: 5px;
+            box-sizing: border-box;
+        }
+
+        .caption {
+            position: relative;
+            padding: 10px;
+            font-size: 12px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #ccc;
+            width: 500px;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('em').hide();
+
+            $('.btns a').click(function (e) {
+                e.preventDefault();
+
+                var path = $(this).attr('href');
+
+                $('.largeImg img').attr({ src: path });
+
+                var msg = $(this).text('em').next();
+
+                $('.largeImg').append("<div class='caption'></div>");
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div id="gallery">
+        <ul class="btns">
+            <li>
+                <a href="./images/pic1.jpg"><img src="./images/th_pic1.jpg" alt=""></a>
+                <em>1이미지 설명</em>
+            </li>
+            <li>
+                <a href="./images/pic2.jpg"><img src="./images/th_pic2.jpg" alt=""></a>
+                <em>
+                    2이미지 설명<br>
+                    2이미지 설명
+                </em>
+            </li>
+            <li>
+                <a href="./images/pic3.jpg"><img src="./images/th_pic3.jpg" alt=""></a>
+                <em>
+                    3이미지 설명<br>
+                    3이미지 설명<br>
+                    3이미지 설명
+                </em>
+            </li>
+        </ul>
+        <div class="largeImg"><img src="./images/pic1.jpg" alt=""></div>
+    </div>
+</body>
+
+</html>

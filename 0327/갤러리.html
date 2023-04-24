@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #gallery {
+            margin: 50px;
+            width: 610px;
+            height: 280px;
+            border: 2px double#000;
+        }
+
+        #gallery ul {
+            float: left;
+        }
+
+        #gallery ul li {
+            width: 105px;
+        }
+
+        #gallery ul li img {
+            float: left;
+            width: 100%;
+        }
+
+        #gallery div {
+            float: right;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        //문서로 이벤트 발생하는 기본문법 2가지
+        // $(document).ready(function () { });
+        // $(function () {});
+        $(document).ready(function () {
+            $('.btns a').click(function (e) {
+                e.preventDefault();
+                //$(대상).attr('속성명')
+
+                var path = $(this).attr('href');    //특정요소의 속성값 추출
+                console.log(path);
+
+                //속성을 적용(바꾸는 작업)
+                $('.largeImg img').attr({ src: path })
+                $('.largeImg img').css({ opacity: 0 }).animate({ opacity: 1 });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="gallery">
+        <ul class="btns">
+            <li>
+                <a href="./images/pic1.jpg"><img src="./images/th_pic1.jpg" alt=""></a>
+                <a href="./images/pic2.jpg"><img src="./images/th_pic2.jpg" alt=""></a>
+                <a href="./images/pic3.jpg"><img src="./images/th_pic3.jpg" alt=""></a>
+            </li>
+        </ul>
+        <div class="largeImg"><img src="./images/pic1.jpg" alt=""></div>
+    </div>
+</body>
+
+</html>
