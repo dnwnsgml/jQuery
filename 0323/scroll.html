@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 3000px;
+            height: 4000px;
+            padding: 30px;
+        }
+
+        #info {
+            position: fixed;
+        }
+
+        #form {
+            margin-top: 50px;
+        }
+
+        span {
+            font-size: 30px;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            var info = $('#info');
+            // 대상.이벤트(함수선언)
+            // 대상.on({
+            //     click: function () { },
+            //     mouseover: function () { };
+            // })
+
+            //웹브라우저에 스크롤값을 자동으로 추출
+            $(window).on('scroll', function () {
+                var sl = $(window).scrollLeft();
+                var st = $(window).scrollTop();
+
+                info.children('.scrollLeft').text(sl);
+                info.children('.scrollTop').text(st);
+
+                //$('.scrollLeft').text(sl);
+                //$('.scrollTop').text(st);
+            });
+            //스크롤값을 위치값을 입력하고 이동
+
+            $('.btn').click(function () {
+                $(window).scrollLeft(parseInt($('.xField').val()));
+                $(window).scrollTop(parseInt($('.yField').val()));
+            })
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="info">
+            <span>scrollLeft = </span><span class="scrollLeft">0</span><br>
+            <span>scrollTop = </span><span class="scrollTop">0</span>
+            <div id="form">
+                <span>이동시킬 스크롤의 위치값을 입력해 주세요.</span><br>
+                <input type="text" class="xField" value="">
+                <input type="text" class="yField" value="">
+                <input type="button" class="btn" value="입력">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

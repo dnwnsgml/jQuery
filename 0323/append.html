@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            border: 3px solid black;
+            padding: 20px;
+            margin: 20px;
+            font-size: 20px;
+        }
+
+        .newel {
+            color: red;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#wrapper>ul').append("<li class = 'newel'>3-5 (추가된자식 태그)");
+            $('#wrapper>ul').prepend("<li class = 'newel'>3-0 (추가된자식 태그)");
+
+            //append()는 지정된 요소의 자식요소에 마지막에 태그추가
+            //prepend()는 지정된 요소의 자식요소에 처음에 태그추가
+            //before()는 지정된 요소의 형제요소로 앞에 태그추가
+            //after()는 지정된 요소의 형제요소로 뒤에 태그추가
+
+            $('#wrapper>ul').before("<h3 class = 'newel'>2-1 (추가된형제 태그)");
+            $('#wrapper>ul').after("<h3 class = 'newel'>4-1 (추가된형제 태그)");
+
+            //remove()는 요소삭제
+            $('#wrapper>ul').find('li').eq(1).remove();
+
+            //요소복제
+            var cloneEl = $('#wrapper>ul').clone();
+            $('#new_area').append(cloneEl);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <ul>
+            <li>3-1</li>
+            <li>3-2</li>
+            <li>3-3</li>
+            <li>3-4 (아래에 3-5를 채워주세요.)</li>
+        </ul>
+    </div>
+    <hr>
+    <div id="new_area">
+
+    </div>
+</body>
+
+</html>

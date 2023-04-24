@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        #slider {
+            position: relative;
+            margin: 100px 100px 20px 100px;
+            width: 600px;
+            height: 350px;
+            border: 1px solid;
+            overflow: hidden;
+        }
+
+        #viewer {
+            width: 2400px;
+            height: 350px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #viewer img {
+            float: left;
+        }
+
+        #btns {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            z-index: 9999;
+        }
+
+        #btns li {
+            float: left;
+            margin-right: 10px;
+            width: 15px;
+            height: 15px;
+            background-color: black;
+        }
+
+        #btns li a {
+            text-decoration: none;
+            display: block;
+            font-size: 12px;
+            text-align: center;
+            line-height: 15px;
+            color: aliceblue;
+        }
+
+        #btns li.on a {
+            background-color: #fff;
+            color: black;
+        }
+
+        #btn_area {
+            width: 600px;
+            margin-left: 100px;
+        }
+
+        #btn_area button {
+            padding: 5px 12px;
+            background-color: black;
+            color: #fff;
+            border: 0px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$('#viewer').animate({ left: '-1800px' }, 3000);
+            var current = 0;    //현재 화면에 보여지는 이미지의 인덱스값 설정
+            $('btns_li').eq(current).addClass('on');
+
+            $('#btns li').click(function (e) {
+                e.preventDefault();
+                var i = $(this).index();
+                console.log(i);
+                slide(i);   //매개변수로 i값 전달
+                current = i;    //버튼을 클릭했을때 발생하는 인덱스값을 현재이미지번호와 동일하게 설정
+
+                $('#btns li').removeClass('on');
+                $(this).addClass('on');
+
+            })
+
+            //좌우버튼
+            $('#prev').click(function () {
+                current = current - 1;
+                if (current == -1) {
+                    current = 3;
+                }
+
+                slide(current);
+
+                $('#btns li').removeClass('on');
+                $('#btns li').eq(current).addClass('on');
+            });
+
+            $('#next').click(function () {
+                current = current + 1;
+                if (current == 4) {
+                    current = 0;
+                }
+
+                slide(current);
+
+                $('#btns li').removeClass('on');
+                $('#btns li').eq(current).addClass('on');
+            })
+
+
+            function slide(n) {
+                var pos = n * (-600) + 'px';
+                $('#viewer').animate({ left: pos }, 700);
+            }
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="slider">
+        <div id="viewer">
+            <img src="./images/slide1.jpg" alt="">
+            <img src="./images/slide2.jpg" alt="">
+            <img src="./images/slide3.jpg" alt="">
+            <img src="./images/slide4.jpg" alt="">
+        </div>
+        <ul id="btns">
+            <li><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+        </ul>
+    </div>
+    <div id="btn_area">
+        <button id="prev">previous</button>
+        <button id="next">next</button>
+    </div>
+</body>
+
+</html>

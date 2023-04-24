@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            border: 3px solid black;
+            padding: 20px;
+            margin: 20px;
+            font-size: 20px;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$('#wrapper').html($('#hidden').html());
+
+            $('#wrapper').text($('#copy').text());
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <span>이곳의 내용을 바꿔 주세요.</span>
+    </div>
+    <div id="hidden">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div id="copy">
+        <ul>
+            <li>여기의</li>
+            <li>텍스트를</li>
+            <li>복사해서붙여넣어주세요.</li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        #slider {
+            position: relative;
+            margin: 100px 100px 20px 100px;
+            width: 600px;
+            height: 350px;
+            border: 1px solid;
+            overflow: hidden;
+        }
+
+        #viewer {
+            width: 600px;
+            height: 350px;
+            position: relative;
+        }
+
+        #viewer img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #viewer img:nth-child(1) {
+            z-index: 400;
+        }
+
+        #viewer img:nth-child(2) {
+            z-index: 300;
+        }
+
+        #viewer img:nth-child(3) {
+            z-index: 200;
+        }
+
+        #viewer img:nth-child(4) {
+            z-index: 100;
+        }
+
+        #btns {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            z-index: 9999;
+        }
+
+        #btns li {
+            float: left;
+            margin-right: 10px;
+            width: 15px;
+            height: 15px;
+            background-color: black;
+        }
+
+        #btns li a {
+            text-decoration: none;
+            display: block;
+            font-size: 12px;
+            text-align: center;
+            line-height: 15px;
+            color: aliceblue;
+        }
+
+        #btns li.on a {
+            background-color: #fff;
+            color: black;
+        }
+
+        #btn_area {
+            width: 600px;
+            margin-left: 100px;
+        }
+
+        #btn_area button {
+            padding: 5px 12px;
+            background-color: black;
+            color: #fff;
+            border: 0px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$('#viewer').animate({ left: '-1800px' }, 3000);
+            var current = 0;    //현재 화면에 보여지는 이미지의 인덱스값 설정
+            var n = 0;
+            $('btns_li').eq(current).addClass('on');
+
+            $('#btns li').click(function (e) {
+                e.preventDefault();
+                var i = $(this).index();
+                console.log(i);
+                slide(i);   //매개변수로 i값 전달
+                current = i;    //버튼을 클릭했을때 발생하는 인덱스값을 현재이미지번호와 동일하게 설정
+
+                $('#btns li').removeClass('on');
+                $(this).addClass('on');
+
+            })
+
+            //좌우버튼
+            $('#prev').click(function () {
+                n = current - 1;
+                if (n == -1) {
+                    n = 3;
+                }
+
+                slide(n);
+
+                $('#btns li').removeClass('on');
+                $('#btns li').eq(current).addClass('on');
+            });
+
+            $('#next').click(function () {
+                var n = current + 1;
+
+                if (n == 4) {
+                    n = 0;
+                }
+
+                slide(n);
+                console.log(n)
+
+                $('#btns li').removeClass('on');
+                $('#btns li').eq(n).addClass('on');
+            })
+
+
+            function slide(n) {
+                //var pos = n * (-600) + 'px';
+                $('#viewer img').eq(current).css({ opacity: 1 }).animate({ opacity: 0 }, 700);
+                $('#viewer img').eq(n).css({ opacity: 0 }).animate({ opacity: 1 }, 700);
+
+                current = n;
+                //현재 이미지에 효과로 사라지고 새로운이미지가 나타난후
+                //다시 슬라이드 효과가 시작할때는 앞에 새로운 이미지가 현재 보이므로 그 이미지를
+                //현재 이미지로 지정해야함 
+            }
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="slider">
+        <div id="viewer">
+            <img src="./images/slide1.jpg" alt="">
+            <img src="./images/slide2.jpg" alt="">
+            <img src="./images/slide3.jpg" alt="">
+            <img src="./images/slide4.jpg" alt="">
+        </div>
+        <ul id="btns">
+            <li><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+        </ul>
+    </div>
+    <div id="btn_area">
+        <button id="prev">previous</button>
+        <button id="next">next</button>
+    </div>
+</body>
+
+</html>

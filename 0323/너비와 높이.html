@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        span {
+            color: red;
+            font-size: 29px;
+        }
+
+        #wrapper {
+            border: 5px solid blue;
+            padding: 30px;
+            margin: 20px;
+            font-size: 20px;
+            height: 50vh;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        //$(document).ready();  페이지가 읽어들이면 실행
+        //$(document).scroll(); 페이지 스크롤이 발생했을때 실행
+        //$(document).resize(); 화면의 크기가 변화가 생길때 실행
+        //$(document).load();   특정요소가 읽어들이면 실행
+
+        $(document).ready(function () {
+            $(window).resize(function () {
+                var box = $('#wrapper');
+
+                $('#width').text($('#wrapper').width());
+                $('#height').text(box.height());
+                $('#innerWidth').text($('#wrapper').innerWidth());
+                $('#innerHeight').text($('#wrapper').innerHeight());
+                $('#outerWidth').text($('#wrapper').outerWidth());
+                $('#outerHeight').text($('#wrapper').outerHeight());
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <span>박스의 width =</span><span id="width">0</span><br>
+        <span>박스의 height =</span><span id="height">0</span><br>
+        <!-- 요소의 width값에 padding값이 포함된 가로값 -->
+        <span>박스의 innerWidth =</span><span id="innerWidth">0</span><br>
+        <span>박스의 innerHeight =</span><span id="innerHeight">0</span><br>
+        <!-- 요소의 width값에 margin값이 포함된 가로값 -->
+        <span>박스의 outerwidth =</span><span id="outerWidth">0</span><br>
+        <span>박스의 outerHeight =</span><span id="outerHeight">0</span>
+    </div>
+</body>
+
+</html>

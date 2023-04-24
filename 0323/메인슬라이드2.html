@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #main_img_area {
+            width: 100%;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .imgs_area {
+            width: 100%;
+            height: 350px;
+            position: relative;
+        }
+
+        .imgs_area>ul {}
+
+        .imgs_area>ul>li {
+            width: 100%;
+            height: 350px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .imgs_area>ul>li.img1 {
+            background-color: royalblue;
+            left: 0%;
+            z-index: 300;
+        }
+
+        .imgs_area>ul>li.img2 {
+            background-color: pink;
+            left: 0%;
+            z-index: 200;
+        }
+
+        .imgs_area>ul>li.img3 {
+            background-color: lightseagreen;
+            left: 0%;
+            z-index: 100;
+        }
+
+        #main_img_area .btns {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            z-index: 3000;
+            margin-left: -32.5px;
+        }
+
+        #main_img_area .btns li {
+            float: left;
+            margin-right: 10px;
+            width: 15px;
+            height: 15px;
+            border-radius: 7.5px;
+            background-color: #fff;
+        }
+
+        #main_img_area .btns li.on {
+            background-color: #333;
+            width: 30px;
+            animation-name: ani01;
+            animation-duration: 1s;
+        }
+
+        @keyframes ani01 {
+            0% {
+                width: 15px;
+            }
+
+            100% {
+                width: 30px;
+            }
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/slidebanner2.js"></script>
+    </script>
+</head>
+
+<body>
+    <div id="main_img_area">
+        <!-- 메인이미지영역 -->
+        <div class="imgs_area">
+            <ul>
+                <li class="img1">메인이미지1</li>
+                <li class="img2">메인이미지2</li>
+                <li class="img3">메인이미지3</li>
+            </ul>
+        </div>
+
+        <!-- 버튼영역 -->
+        <ul class="btns">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>
