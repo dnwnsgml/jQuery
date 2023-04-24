@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            var menu = $('#top_menu > ul > li');
+            var contents = $('#contents > div');
+
+            menu.click(function (event) {
+                event.preventDefault();
+
+                var i = $(this).index();
+                //현재이벤트가 적용된 li태그의 인덱스값
+
+                var section = contents.eq(i);
+                //콘텐츠에 div객체와 버튼의 인덱스값
+
+                var target = section.offset().top;
+                //매칭된 대상내에서 위치를 설정하여 타켓지정 -> 스크롤의 최종위치
+
+                //애니메이션
+                //요소가 움직임을 줄때는 포지션을 사용하고
+                //화면의 움직임을 줄때는 scrollTop,scrollLeft로 애니메이션 설정
+                $('html, body').stop().animate({ scrollTop: target });
+
+                // menu.removeClass('on');
+                // $(this).addClass('on');
+            });
+
+            //화면의 이동에 대한 이벤트(scroll)
+            $(window).scroll(function () {
+                var sct = $(window).scrollTop();
+
+                contents.each(function () {
+                    var tg = $(this);
+                    var i = tg.index(); //0
+
+                    //scrollTop의 위치를 비교함
+                    if (tg.offset().top <= sct) {
+                        menu.removeClass('on');
+                        menu.eq(i).addClass('on');
+                        //(this)
+                    }
+                });
+            });
+        });
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: #545454;
+        }
+
+        #wrap {
+            width: 950px;
+            margin: 0 auto;
+            padding-bottom: 400px;
+        }
+
+        #top_menu {
+            position: fixed;
+            top: 0;
+            width: 950px;
+            height: 114px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #545454;
+
+        }
+
+        #top_menu ul {
+            float: right;
+            margin-right: 33px;
+        }
+
+        #top_menu ul li {
+            padding: 59px 0 0 63px;
+            float: left;
+        }
+
+        #top_menu ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #top_menu ul li.on a {
+            color: #000;
+            font-weight: bold;
+        }
+
+        #works {
+            width: 100%;
+            height: 650px;
+            background-color: salmon;
+        }
+
+        #company {
+            width: 100%;
+            height: 650px;
+            background-color: rebeccapurple;
+        }
+
+        #email {
+            width: 100%;
+            height: 700px;
+            background-color: darkseagreen;
+        }
+
+        #contents div {
+            padding-top: 114px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="top_menu">
+            <ul>
+                <li class="on"><a href="#works">works</a></li>
+                <li><a href="#company">company</a></li>
+                <li><a href="#email">email</a></li>
+            </ul>
+        </div>
+        <div id="contents">
+            <div id="works">
+                <h3>works</h3>
+            </div>
+            <div id="company">
+                <h3>company</h3>
+            </div>
+            <div id="email">
+                <h3>email</h3>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

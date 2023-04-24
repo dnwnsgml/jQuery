@@ -1,0 +1,91 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0033)http://goodenough7.dothome.co.kr/ -->
+<!DOCTYPE html PUBLIC "" "">
+<HTML lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<HEAD>
+    <META content="IE=11.0000" http-equiv="X-UA-Compatible">
+
+    <META charset="utf-8">
+    <META name="viewport" content="width=device-width, initial-scale=1">
+    <TITLE>WELCOME</TITLE>
+
+
+    <LINK href="js/needpopup.css" rel="stylesheet" type="text/css">
+
+
+    <SCRIPT src="js/jquery-1.7.2.min.js" type="text/javascript"></SCRIPT>
+
+    <STYLE>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            font-size: 13px;
+            color: #333;
+        }
+
+        img {
+            border: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </STYLE>
+
+
+<BODY>
+    <DIV id="all">
+
+        <DIV class="airbnb popup_btn hvr-underline-from-center">
+            <A href="http://goodenough7.dothome.co.kr/#" data-needpopup-show="#custom-popup1">MORE</A>
+        </DIV>
+        <DIV class="needpopup" id="custom-popup1" data-needpopup-options="custom">
+            <IMG width="900" src="img/airbnb.jpg">
+        </DIV>
+
+        <DIV class="airbnb popup_btn hvr-underline-from-center">
+            <A href="http://goodenough7.dothome.co.kr/#" data-needpopup-show="#custom-popup2">MORE</A>
+        </DIV>
+        <DIV class="needpopup" id="custom-popup2" data-needpopup-options="custom">
+            <IMG width="900" src="img/natuur.jpg">
+        </DIV>
+
+        <DIV class="airbnb popup_btn hvr-underline-from-center">
+            <A href="http://goodenough7.dothome.co.kr/#" data-needpopup-show="#custom-popup3">MORE</A>
+        </DIV>
+        <DIV class="needpopup" id="custom-popup3" data-needpopup-options="custom">
+            <IMG width="900" src="img/uniqlo.jpg">
+        </DIV>
+    </DIV>
+
+
+    <!--팝업.js-->
+
+    <SCRIPT src="js/needpopup.min.js" type="text/javascript"></SCRIPT>
+
+    <SCRIPT>
+        needPopup.config.custom = {
+            'removerPlace': 'outside',
+            'closeOnOutside': false,
+            onShow: function () {
+                console.log('needPopup is shown');
+            },
+            onHide: function () {
+                console.log('needPopup is hidden');
+            }
+        };
+        needPopup.init();
+    </SCRIPT>
+</BODY>
+
+</HTML>

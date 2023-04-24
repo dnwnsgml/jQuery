@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        #wrap {
+            width: 100%;
+            padding-bottom: 400px;
+        }
+
+        #top_menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 120px;
+            background-color: grey;
+        }
+
+        #top_menu ul {
+            float: right;
+            margin-right: 33px;
+        }
+
+        #top_menu li {
+            float: left;
+            padding: 60px 0 0 60px;
+        }
+
+        #top_menu a {
+            color: #fff;
+        }
+
+        #top_menu li.on a {
+            color: black;
+            font-weight: bold;
+        }
+
+        #contents {
+            width: 100%;
+        }
+
+        #contents div {
+            padding-top: 140px;
+        }
+
+        #works {
+            margin: 0 auto;
+            width: 1000px;
+            height: 500px;
+            background-color: cornflowerblue;
+
+        }
+
+        #company {
+            margin: 0 auto;
+            width: 1000px;
+            height: 500px;
+            background-color: slateblue;
+        }
+
+        #email {
+            margin: 0 auto;
+            width: 1000px;
+            height: 500px;
+            background-color: rgb(25, 25, 174);
+        }
+    </style>
+
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            var menu = $('#top_menu>ul>li')
+            var contents = $('#contents > div')
+
+            menu.click(function (e) {
+                e.preventDefault();
+
+                var tg = $(this);
+                var i = tg.index();
+
+                var section = contents.eq(i);
+                var target = section.offset().top;
+
+                $('html,body').stop().animate({ scrollTop: target });
+            });
+
+            $(window).scroll(function () {
+                var sct = $(window).scrollTop();
+
+                contents.each(function () {
+                    var tg = $(this);
+                    var i = tg.index();
+
+                    if (tg.offset().top <= sct) {
+                        menu.removeClass('on');
+                        menu.eq(i).addClass('on');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="top_menu">
+            <ul>
+                <li class="on"><a href="#works">works</a></li>
+                <li><a href="#company">company</a></li>
+                <li><a href="#email">email</a></li>
+            </ul>
+        </div>
+        <div id="contents">
+            <div id="works">
+                <h2>works</h2>
+            </div>
+            <div id="company">
+                <h2>company</h2>
+            </div>
+            <div id="email">
+                <h2>email</h2>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

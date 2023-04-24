@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .box {
+        width: 100vw;
+        height: 100vh;
+        border: 1px solid#000;
+        font-size: 50px;
+        padding-top: 100px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .box1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .box2 {
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
+
+    .box3 {
+        position: absolute;
+        top: 0%;
+        left: 200%;
+    }
+
+    .box4 {
+        position: absolute;
+        top: 100%;
+        left: 0%;
+    }
+
+    .box5 {
+        position: absolute;
+        top: 100%;
+        left: 100%;
+    }
+
+    .box6 {
+        position: absolute;
+        top: 100%;
+        left: 200%;
+    }
+
+    .box7 {
+        position: absolute;
+        top: 200%;
+        left: 0%;
+    }
+
+    .box8 {
+        position: absolute;
+        top: 200%;
+        left: 100%;
+    }
+
+    .box9 {
+        position: absolute;
+        top: 200%;
+        left: 200%;
+    }
+
+    .btns {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 9999;
+        margin-top: -150px;
+        margin-left: -150px;
+        width: 300px;
+        height: 300px;
+        border: 1px solid#000;
+    }
+
+    .btns li {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        border: 1px solid#ccc;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 100px;
+    }
+
+    .btns li:hover {
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+
+<script src="./js/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        //scrollTop은 화면이동시 세로방향으로 이동할때 사용하는 메소드
+        //scrollLeft은 화면이동시 가로뱡향으로 이동할때 사용하는 메소드
+
+        $('.btns li').click(function () {
+            var i = $(this).index();
+            var tt = $('#wrap > div').eq(i).offset().top;
+            var tl = $('#wrap > div').eq(i).offset().left;
+
+            $('html,body').stop().animate({
+                scrollTop: tt,
+                scrollLeft: tl
+            })
+        });
+    });
+</script>
+
+<body>
+    <div id="wrap">
+        <ul class="btns">
+            <li>box1</li>
+            <li>box2</li>
+            <li>box3</li>
+            <li>box4</li>
+            <li>box5</li>
+            <li>box6</li>
+            <li>box7</li>
+            <li>box8</li>
+            <li>box9</li>
+        </ul>
+        <div class="box1 box">box1</div>
+        <div class="box2 box">box2</div>
+        <div class="box3 box">box3</div>
+        <div class="box4 box">box4</div>
+        <div class="box5 box">box5</div>
+        <div class="box6 box">box6</div>
+        <div class="box7 box">box7</div>
+        <div class="box8 box">box8</div>
+        <div class="box9 box">box9</div>
+    </div>
+</body>
+
+</html>

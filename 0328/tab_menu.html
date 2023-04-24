@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #tab {
+            width: 600px;
+            height: 450px;
+            border: 2px solid#000;
+            position: relative;
+        }
+
+        #tab>.btns {
+            width: 100%;
+            height: 30px;
+            font-size: 0;
+            border-bottom: 2px solid#000;
+        }
+
+        #tab>.btns li {
+            /* float: left; */
+            display: inline-block;
+            width: 25%;
+            height: 30px;
+            border-right: 1px solid#000;
+            box-sizing: border-box;
+        }
+
+        #tab>.btns a {
+            display: block;
+            height: 30px;
+            font-size: 15px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #tab>.btns a:hover {
+            background-color: lightskyblue;
+            color: aliceblue;
+        }
+
+        #tab>div {
+            width: 100%;
+            height: 420px;
+            position: absolute;
+            top: 30px;
+            left: 0;
+        }
+
+        #tab>div#con1 {
+            background-color: palegreen;
+            z-index: 400;
+        }
+
+        #tab>div#con2 {
+            background-color: paleturquoise;
+            z-index: 300;
+        }
+
+        #tab>div#con3 {
+            background-color: palevioletred;
+            z-index: 200;
+        }
+
+        #tab>div#con4 {
+            background-color: lightsalmon;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tab">
+        <ul class="btns">
+            <li><a href="">tap1</a></li>
+            <li><a href="">tap2</a></li>
+            <li><a href="">tap3</a></li>
+            <li><a href="">tap4</a></li>
+        </ul>
+        <div id="con1">con1</div>
+        <div id="con2">con2</div>
+        <div id="con3">con3</div>
+        <div id="con4">con4</div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#tab>div').hide();
+            $('#tab>div').eq(0).show();
+
+            $('#tab>.btns li').click(
+                function (e) {
+                    e.preventDefault();
+                    var i = $(this).index();
+
+                    $('#tab>div').hide();   //이전에 보인 박스 숨김
+                    //$('#tab>div').eq(i).show(500);
+                    $('#tab>div').eq(i).show().css({ width: '0px' }).animate({ width: '600px' });
+                })
+        });
+    </script>
+</body>
+
+</html>
